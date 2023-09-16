@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="onscrollload.css">
+
+        <title>八神岳 自己紹介サイト</title>
+    </head>    
+    
+    <body>
+    <link rel="stylesheet" href="stylesheet.css">
+
+
+<!-- ------ハンバーガーメニュー------ -->
+    <div class="header">
+        <button id="js-humberger" type="button" class="humberger" aria-controls="navigation" aria-expanded="false">
+                <span class="humberger__line"></span>
+                <span class="humberger__text"></span>
+        </button>
+        <div class="header__nav-area js-nav-area" id="navigation">
+            <nav id="js-global-navigation" class="global-navigation">
+                <ul class="global-navigation__list">
+                    <li>
+                        <a href="index.html" class="global-navigation__link">
+                            HOME
+                        </a>
+                    </li>
+                    <li>
+                        <a href="hobby.html" class="global-navigation__link">
+                            HOBBY
+                        </a>
+                    </li>
+                    <li>
+                        <a href="highschool.html" class="global-navigation__link">
+                            SCHOOL
+                        </a>
+                    </li>
+                    <li>
+                        <a href="team.html" class="global-navigation__link">
+                            TEAM
+                        </a>
+                    </li> 
+                </ul>
+                <div id="js-focus-trap" tabindex="0"></div>
+            </nav>
+        </div>
+    </div>
+
+    <script src="hamburger.js"></script>
+
+
+<!-- ------セクション1------ -->
+    <section id="sec_1">
+        <div class="main_container_sec1">   
+            <div class="sec1_contents_left">
+                <div class="namebox fadeUpTrigger">
+                    <img src="takeshitext.jpeg">
+                </div>  
+            </div>
+
+            <div class="sec1_contents_right">
+                <div class="sec1_contents_right_left">
+                    <div class="spaceblank5">
+                    </div>
+                </div>
+
+                <div class="sec1_contents_right_right">
+                    <div class="mainpicuturebox1">
+                        <div class="mainpicture1">
+                            <img src="takeshi.png">
+                        </div>
+                    </div>
+            
+                    <div class="scrollcover">
+                        <a href="#sec_2">
+                            <div class="scroll">
+                                <span class="txt">Scroll</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spaceblank4">
+                    </div>
+                </div>
+            </div>
+        </div>     
+
+
+        <div class="spaceblank1">
+        </div>    
+
+    </section>    
+
+
+<!-- ------セクション2------ -->
+    <section id="sec_2">   
+
+        <div class="main_container_sec2">
+            <div class="sec2_contents_left">
+                <div class="namebox2 fadeUpTrigger">
+                    <img src="yagamitext.jpeg">
+                </div>
+            </div>
+
+            <div class="sec2_contents_right">
+                <div class="spaceblank2">
+                </div>
+                <div class="category">
+                    <div>
+                        <a href="team.html">
+                            <img src="team_pict.jpeg" class="image fadeUpTrigger">
+                            <div class="tex2 fadeUpTrigger">所属チーム</div>
+                            <div class="spaceblank3"></div>
+                            <div class="txt3"></div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="hobby.html">
+                            <img src="Star_pict.jpeg" class="image fadeUpTrigger">
+                            <div class="tex2 fadeUpTrigger">趣味</div>
+                            <div class="spaceblank3"></div>
+                            <div class="txt3"></div>
+                        </a>    
+                    </div>
+                    <div>
+                        <a href="highschool.html">
+                            <img src="School_pict.jpeg" class="image fadeUpTrigger">
+                            <div class="tex2 fadeUpTrigger">出身校</div>
+                            <div class="spaceblank3"></div>
+                            <div class="txt3"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="spaceblank6">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+<!-- ------GoogleMap検証用------ 
+    <script type="text/javascript" src="//maps.google.com/maps/api/js?key=AIzaSyAIi2iVN_BFP7tn7XzvwPpEFz7oC9iJqEk"></script>
+    <script type="text/javascript">
+
+    function setLocation(pos){
+
+        // 緯度・経度を取得
+        lat = pos.coords.latitude;
+        lon = pos.coords.longitude;
+
+        // 緯度・経度を表示
+        document.getElementById("table_lat").innerHTML = lat;
+        document.getElementById("table_lon").innerHTML = lon;
+
+        // google map へ表示するための設定
+        latlon = new google.maps.LatLng(lat,lon);
+        map = document.getElementById("map");
+        opt = {
+            zoom: 17,
+            center: latlon,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            scrollwheel: false,
+            scaleControl: true,
+            disableDoubleClickZoom: true,
+            draggable: false
+        };
+
+        // google map 表示
+        mapObj = new google.maps.Map(map, opt);
+
+        // マーカーを設定
+        marker = new google.maps.Marker({
+            position: latlon,
+            map: mapObj
+        });
+
+    }
+
+    // エラー時に呼び出される関数
+    function showErr(err){
+        switch(err.code){
+            case 1 : alert("位置情報の利用が許可されていません"); break;
+            case 2 : alert("デバイスの位置が判定できません"); break;
+            case 3 : alert("タイムアウトしました"); break;
+            default : alert(err.message);
+        }
+    }
+
+    // geolocation に対応しているか否かを確認
+    if("geolocation" in navigator){
+        var opt = {
+            "enableHighAccuracy": true,
+            "timeout": 10000,
+            "maximumAge": 0,
+        };
+        navigator.geolocation.getCurrentPosition(setLocation, showErr, opt);
+    }else{
+        alert("ブラウザが位置情報取得に対応していません");
+    }
+
+    </script>
+
+    <div id="map" style="height:500px"></div>
+
+    <table>
+        <tr><th>緯度</th><td id="table_lat"></td></tr>
+        <tr><th>経度</th><td id="table_lon"></td></tr>
+    </table>-->
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="onscrollload.js"></script>
+
+    </body>
+</html>
+
